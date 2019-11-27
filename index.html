@@ -19,21 +19,17 @@
     <div id="root"></div>
 
     <script type="text/babel">
-       /*
+       
+       /** @jsx customLib.createElement **/
+       
         const element = (
             <div id="foo">
                 <h1> Welcome to the site </h1>
                 <a href="#">See more   +</a>
             </div>
         )
-       */
 
-        const element = React.createElement('div',  {id: 'foo'},
-            React.createElement('h1', null, 'Welcome to the site'),
-            React.createElement('a', {href: '#'}, 'see more')
-        )
-
-        ReactDOM.render(element, document.getElementById('root'))
+        customLib.render(element, document.getElementById('root'))
     </script>
 </body>
 </html>
