@@ -4,7 +4,7 @@
  * @param {object} props 
  * @param  {...object|string} children
  */
-function createElement(type, props, ...children) {
+export function createElement(type, props, ...children) {
     return {
         type,
         props: {
@@ -28,5 +28,3 @@ function createTextElement(text) {
         }
     }
 }
-
-export default createElement; 
