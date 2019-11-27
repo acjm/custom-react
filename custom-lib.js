@@ -1,5 +1,7 @@
 import { createElement } from './customlib/vdom.js'
 
+let nextUnittoWork = null
+
 /**
  * Render the element into the DOM
  * @param {element} element 
@@ -23,7 +25,31 @@ function render (element, container) {
 
     container.appendChild(dom)
 }
-
+/**
+ * 
+ * @param {IdleDeadline} deadline 
+ */
+function workLoop(deadline) {
+    let shouldYield = false
+    while(nextUnittoWork && !shouldYield) {
+        nextUnittoWork = performUnitOfWork(nextUnittoWork)
+        shouldYield = deadline.timeRemaining() < 1
+    }
+    requestIdleCallback(workLoop)
+}
+/**
+ *  Idlecallback
+ */
+requestIdleCallback(workLoop)
+/**
+ * Perform a task and return the next task 
+ * @param {*} nextUnittoWork 
+ * @return {object|null}
+ */
+function performUnitOfWork(nextUnittoWork) {
+    console.log('perform unit of work', nextUnitOfWork)
+    return null; 
+}
 window.customLib = {
     createElement,
     render
