@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Custom ReactJs lib</title>
-    <!-- importing react -->
-    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <!-- 
+         <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-
+     -->
+   
+     <script src="custom-lib.js" type="module"></script>
     <!-- babel standalone mode to support jsx -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
 </head>
@@ -16,6 +18,22 @@
 
     <div id="root"></div>
 
+    <script type="text/babel">
+       /*
+        const element = (
+            <div id="foo">
+                <h1> Welcome to the site </h1>
+                <a href="#">See more   +</a>
+            </div>
+        )
+       */
 
+        const element = React.createElement('div',  {id: 'foo'},
+            React.createElement('h1', null, 'Welcome to the site'),
+            React.createElement('a', {href: '#'}, 'see more')
+        )
+
+        ReactDOM.render(element, document.getElementById('root'))
+    </script>
 </body>
 </html>
